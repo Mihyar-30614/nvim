@@ -5,12 +5,11 @@ return {
 		opts = {
 			delay = 0,
 			preset = "helix",
-			window = {
-				border = "rounded",   -- none, single, double, shadow, rounded
-				position = "bottom",  -- bottom, top
-				margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-				padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-				winblend = 0,         -- value between 0-100 0 for fully opaque and 100 for fully transparent
+			win = {
+				no_overlap = true,
+				padding = { 1, 1 },
+				title = true,
+				title_pos = "center",
 			},
 			layout = {
 				height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -20,36 +19,36 @@ return {
 			},
 			icons = {
 				mappings = vim.g.have_nerd_font,
-				keys = vim.g.have_nerd_font and {} or {
-					Up = "<Up> ",
-					Down = "<Down> ",
-					Left = "<Left> ",
-					Right = "<Right> ",
-					C = "<C-…> ",
-					M = "<M-…> ",
-					D = "<D-…> ",
-					S = "<S-…> ",
-					CR = "<CR> ",
-					Esc = "<Esc> ",
-					ScrollWheelDown = "<ScrollWheelDown> ",
-					ScrollWheelUp = "<ScrollWheelUp> ",
-					NL = "<NL> ",
-					BS = "<BS> ",
-					Space = "<Space> ",
-					Tab = "<Tab> ",
-					F1 = "<F1>",
-					F2 = "<F2>",
-					F3 = "<F3>",
-					F4 = "<F4>",
-					F5 = "<F5>",
-					F6 = "<F6>",
-					F7 = "<F7>",
-					F8 = "<F8>",
-					F9 = "<F9>",
-					F10 = "<F10>",
-					F11 = "<F11>",
-					F12 = "<F12>",
-				},
+				-- keys = vim.g.have_nerd_font and {} or {
+				-- 	Up = "<Up> ",
+				-- 	Down = "<Down> ",
+				-- 	Left = "<Left> ",
+				-- 	Right = "<Right> ",
+				-- 	C = "<C-…> ",
+				-- 	M = "<M-…> ",
+				-- 	D = "<D-…> ",
+				-- 	S = "<S-…> ",
+				-- 	CR = "<CR> ",
+				-- 	Esc = "<Esc> ",
+				-- 	ScrollWheelDown = "<ScrollWheelDown> ",
+				-- 	ScrollWheelUp = "<ScrollWheelUp> ",
+				-- 	NL = "<NL> ",
+				-- 	BS = "<BS> ",
+				-- 	Space = "<Space> ",
+				-- 	Tab = "<Tab> ",
+				-- 	F1 = "<F1>",
+				-- 	F2 = "<F2>",
+				-- 	F3 = "<F3>",
+				-- 	F4 = "<F4>",
+				-- 	F5 = "<F5>",
+				-- 	F6 = "<F6>",
+				-- 	F7 = "<F7>",
+				-- 	F8 = "<F8>",
+				-- 	F9 = "<F9>",
+				-- 	F10 = "<F10>",
+				-- 	F11 = "<F11>",
+				-- 	F12 = "<F12>",
+				-- },
 			},
 
 			-- Document existing key chains with comprehensive organization

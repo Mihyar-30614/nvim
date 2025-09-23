@@ -6,7 +6,6 @@ map({ "n", "v" }, "<Space>", "<Nop>", opts)
 map("i", "jj", "<Esc>", { desc = "Quick escape" })
 map("n", "<leader>w", ":w<CR>", { desc = "Write" })
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
-map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("t", "<esc><esc>", "<c-\\><c-n>")
 
