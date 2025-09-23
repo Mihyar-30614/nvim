@@ -8,6 +8,7 @@ map("n", "<leader>w", ":w<CR>", { desc = "Write" })
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+map("t", "<esc><esc>", "<c-\\><c-n>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",

@@ -84,6 +84,7 @@ return {
 				-- File Operations Group
 				{ "<leader>t", group = "📁 File Operations" },
 				{ "<leader>tt", name = "File browser (Oil)" },
+				{ "<leader>tr", name = "Floating terminal" },
 
 				-- Utilities Group
 				{ "<leader>u", group = "⚙️ Utilities" },
