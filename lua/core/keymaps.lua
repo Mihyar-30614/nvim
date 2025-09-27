@@ -48,3 +48,7 @@ map("n", "<leader>u8", function()
 	vim.o.shiftwidth = 8
 	vim.notify("Indent width set to 8")
 end, { desc = "Set indent width = 8" })
+
+map('n', '<leader>uc', function()
+	vim.cmd.edit(vim.fn.stdpath('config')) -- works with netrw or your dir plugin
+end, { desc = 'Open Neovim config directory' })
