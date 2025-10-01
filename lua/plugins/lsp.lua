@@ -11,10 +11,10 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		version = "v0.1.8",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 			local on_attach = function(_, bufnr)
 				local map = function(mode, lhs, rhs, desc)
 					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
@@ -32,6 +32,7 @@ return {
 			end
 
 			local lspconfig = require("lspconfig")
+			-- local lspconfig = vim.lsp.config()
 
 			-- Lua
 			lspconfig.lua_ls.setup({
@@ -40,8 +41,7 @@ return {
 				settings = { Lua = { diagnostics = { globals = { "vim" } }, workspace = { checkThirdParty = false } } },
 			})
 
-			-- Use tsserver explicitly for broad compatibility
-			for _, s in ipairs({ "tsserver", "pyright", "bashls", "jsonls", "yamlls" }) do
+			for _, s in ipairs({ "ts_ls", "pyright", "bashls", "jsonls", "yamlls" }) do
 				lspconfig[s].setup({ capabilities = capabilities, on_attach = on_attach })
 			end
 		end,
