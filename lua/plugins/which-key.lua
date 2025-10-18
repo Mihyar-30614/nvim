@@ -103,6 +103,8 @@ return {
 				{ "<C-l>", name = "Right window" },
 				{ "<C-j>", name = "Lower window" },
 				{ "<C-k>", name = "Upper window" },
+				{ "<M-k>", name = "Move visual selection up" },
+				{ "<M-j>", name = "Move visual selection down" },
 
 				-- Terminal
 				{ "<Esc><Esc>", name = "Exit terminal", mode = "t" },

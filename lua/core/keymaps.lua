@@ -8,6 +8,8 @@ map("n", "<leader>w", ":w<CR>", { desc = "Write" })
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("t", "<esc><esc>", "<c-\\><c-n>")
+map("x", "<M-k>", ":move '<-2<CR>gv=gv", { desc = "Move highlighted text up" })
+map("x", "<M-j>", "dp`[V`]", { desc = "Move visual selection down" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -49,6 +51,6 @@ map("n", "<leader>u8", function()
 	vim.notify("Indent width set to 8")
 end, { desc = "Set indent width = 8" })
 
-map('n', '<leader>uc', function()
-	vim.cmd.edit(vim.fn.stdpath('config')) -- works with netrw or your dir plugin
-end, { desc = 'Open Neovim config directory' })
+map("n", "<leader>uc", function()
+	vim.cmd.edit(vim.fn.stdpath("config")) -- works with netrw or your dir plugin
+end, { desc = "Open Neovim config directory" })
