@@ -11,7 +11,8 @@ o.updatetime = 250
 o.timeoutlen = 400
 o.splitright = true
 o.splitbelow = true
-o.list = true
+o.list = false
+-- o.list = true
 -- o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 o.inccommand = "split"
 o.cursorline = true
