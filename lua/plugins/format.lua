@@ -1,34 +1,43 @@
 return {
-	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
-	keys = {
-		{
-			"<leader>=",
-			function()
-				require("conform").format({ async = true })
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>=",
+				function()
+					require("conform").format({ async = true, lsp_format = "fallback" })
+				end,
+				mode = "",
+				desc = "[F]ormat buffer",
+			},
+		},
+		opts = {
+			notify_on_error = false,
+			format_on_save = function(bufnr)
+				local disable_filetypes = { c = true, cpp = true }
+				if disable_filetypes[vim.bo[bufnr].filetype] or vim.g.conform_format_on_save_enabled == false then
+					return nil
+				else
+					return {
+						timeout_ms = 500,
+						lsp_format = "fallback",
+					}
+				end
 			end,
-			mode = { "n", "v" },
-			desc = "Format buffer",
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				css = { "prettierd", "prettier", stop_after_first = true },
+				scss = { "prettierd", "prettier", stop_after_first = true },
+				json = { "prettierd", "prettier", stop_after_first = true },
+			},
 		},
 	},
-	opts = {
-		formatters_by_ft = {
-			lua = { "stylua" },
-			python = { "isort", "black" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			-- (plus any others you added)
-		},
-		default_format_opts = { lsp_format = "fallback" },
-		format_on_save = function(bufnr)
-			if vim.g.conform_format_on_save_enabled == false then
-				return
-			end
-			return { timeout_ms = 500, lsp_format = "fallback" }
-		end,
-		formatters = { shfmt = { append_args = { "-i", "2" } } },
-	},
-	init = function()
-		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-	end,
 }
