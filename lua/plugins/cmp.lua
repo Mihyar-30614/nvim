@@ -9,6 +9,8 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"onsails/lspkind.nvim",
+			-- Optional here if not installed elsewhere:
+			-- "kristijanhusak/vim-dadbod-completion",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -44,8 +46,34 @@ return {
 						end
 					end, { "i", "s" }),
 				}),
-				sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" } },
-				formatting = { format = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 40 }) },
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
+				},
+				formatting = {
+					format = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 40 }),
+				},
+			})
+
+			-- 💾 SQL-specific completion: Dadbod + buffer/path (buffer-local)
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "sql", "mysql", "plsql" },
+				callback = function()
+					-- Use Dadbod completion + common fallbacks in SQL buffers
+					cmp.setup.buffer({
+						sources = cmp.config.sources({
+							{ name = "vim-dadbod-completion" },
+						}, {
+							{ name = "buffer" },
+							{ name = "path" },
+						}),
+						completion = { keyword_length = 1 },
+					})
+					-- Optional: keep omnifunc fallback for plugins/motions
+					vim.bo.omnifunc = "vim_dadbod_completion#omni"
+				end,
 			})
 		end,
 	},

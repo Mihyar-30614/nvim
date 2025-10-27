@@ -86,12 +86,16 @@ return {
 				{ "<leader>tr", name = "Floating terminal" },
 
 				-- Utilities Group
-				{ "<leader>u", group = "⚙️ Utilities" },
+				{ "<leader>u", group = "Utilities" },
 				{ "<leader>uF", name = "Toggle format on save" },
 				{ "<leader>ut", name = "Toggle expandtab (tabs vs spaces)" },
 				{ "<leader>u2", name = "Set indent width = 2" },
 				{ "<leader>u4", name = "Set indent width = 4" },
 				{ "<leader>u8", name = "Set indent width = 8" },
+
+				-- Database Group
+				{ "<leader>d", group = "Database" },
+				{ "<leader>db", name = "Toggle database UI" },
 
 				-- Diagnostics & Troubleshooting
 				{ "<leader>x", group = "🔍 Diagnostics & Troubleshooting" },
