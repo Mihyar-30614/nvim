@@ -54,3 +54,13 @@ end, { desc = "Set indent width = 8" })
 map("n", "<leader>uc", function()
 	vim.cmd.edit(vim.fn.stdpath("config")) -- works with netrw or your dir plugin
 end, { desc = "Open Neovim config directory" })
+
+map("n", "<leader>nl", function()
+	require("noice").cmd("last")
+end, { desc = "Noice Last Message" })
+
+map("n", "<leader>nh", function()
+	require("noice").cmd("history")
+end, { desc = "Noice History" })
+
+map("n", "<leader>nm", "<cmd>Noice telescope<cr>", { desc = "Noice Messages (Telescope)" })

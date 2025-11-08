@@ -54,7 +54,7 @@ return {
 			-- Document existing key chains with comprehensive organization
 			spec = {
 				-- Harpoon Group
-				{ "<leader>h", group = "🎯 Harpoon" },
+				{ "<leader>h", group = "Harpoon" },
 				{ "<leader>ha", name = "Add file" },
 				{ "<leader>hh", name = "Toggle menu" },
 				{ "<leader>hn", name = "Next file" },
@@ -65,7 +65,7 @@ return {
 				{ "<leader>h4", name = "Go to slot 4" },
 
 				-- Search & Telescope Group
-				{ "<leader>s", group = "🔍 Search & Telescope" },
+				{ "<leader>s", group = "Search & Telescope" },
 				{ "<leader>sh", name = "[S]earch [H]elp" },
 				{ "<leader>sk", name = "[S]earch [K]eymaps" },
 				{ "<leader>sf", name = "[S]earch [F]iles" },
@@ -81,7 +81,7 @@ return {
 				{ "<leader><leader>", name = "[ ] Find existing buffers" },
 
 				-- File Operations Group
-				{ "<leader>t", group = "📁 File Operations" },
+				{ "<leader>t", group = "File Operations" },
 				{ "<leader>tt", name = "File browser (Oil)" },
 				{ "<leader>tr", name = "Floating terminal" },
 
@@ -98,9 +98,15 @@ return {
 				{ "<leader>db", name = "Toggle database UI" },
 
 				-- Diagnostics & Troubleshooting
-				{ "<leader>x", group = "🔍 Diagnostics & Troubleshooting" },
+				{ "<leader>x", group = "Diagnostics & Troubleshooting" },
 				{ "<leader>xx", name = "Diagnostics (Trouble)" },
 				{ "<leader>xq", name = "Quickfix list" },
+
+				-- Noice Group --
+				{ "<leader>n", group = "Noice" },
+				{ "<leader>nl", name = "Noice Last Message" },
+				{ "<leaeder>nh", name = "Noice History" },
+				{ "<leader>nm", name = "Noice Messages (telescope)" },
 
 				-- Window Navigation
 				{ "<C-h>", name = "Left window" },

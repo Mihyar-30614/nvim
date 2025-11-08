@@ -9,8 +9,8 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"onsails/lspkind.nvim",
-			-- Optional here if not installed elsewhere:
-			-- "kristijanhusak/vim-dadbod-completion",
+			"kristijanhusak/vim-dadbod-completion",
+			"hrsh7th/cmp-cmdline",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -55,6 +55,20 @@ return {
 				formatting = {
 					format = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 40 }),
 				},
+				-- Setup for command-line mode (:)
+				cmp.setup.cmdline(":", {
+					sources = cmp.config.sources({
+						{ name = "cmdline" }, -- Use the cmdline source
+						{ name = "path" }, -- Also suggest file paths
+					}),
+				}),
+
+				-- Setup for search mode (/) and (?)
+				cmp.setup.cmdline({ "/", "?" }, {
+					sources = cmp.config.sources({
+						{ name = "buffer" }, -- Suggest words from the buffer when searching
+					}),
+				}),
 			})
 
 			-- 💾 SQL-specific completion: Dadbod + buffer/path (buffer-local)
