@@ -26,7 +26,7 @@ return {
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
 
-			-- Allows extra capabilities provided by blink.cmp
+			-- Completion + LSP capabilities; full spec (build, blink.lib) in plugins/blink-cmp.lua
 			"saghen/blink.cmp",
 		},
 		config = function()
