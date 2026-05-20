@@ -1,4 +1,4 @@
--- blink.cmp v2: requires saghen/blink.lib; build downloads the native fuzzy library.
+-- blink.cmp v2: requires saghen/blink.lib. Lua fuzzy impl avoids cargo dep.
 -- See :h blink-cmp-installation
 return {
 	{
@@ -6,9 +6,8 @@ return {
 		dependencies = {
 			"saghen/blink.lib",
 		},
-		build = function()
-			require("blink.cmp").build():wait(60000)
-		end,
-		opts = {},
+		opts = {
+			fuzzy = { implementation = "lua" },
+		},
 	},
 }
