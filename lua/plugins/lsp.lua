@@ -221,21 +221,14 @@ return {
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
-				--
+
+				ts_ls = {},
+				angularls = {},
+				pyright = {},
 
 				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
 					settings = {
 						Lua = {
 							completion = {
@@ -267,19 +260,19 @@ return {
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+			-- nvim 0.11+ / mason-lspconfig v2: no more `handlers`.
+			-- Register configs via vim.lsp.config; mason-lspconfig auto-enables
+			-- installed servers (automatic_enable defaults true).
+			-- nvim-lspconfig ships base configs under runtimepath/lsp/, which
+			-- vim.lsp.config merges our overrides onto.
+			vim.lsp.config("*", { capabilities = capabilities })
+			for server_name, server_opts in pairs(servers) do
+				vim.lsp.config(server_name, server_opts)
+			end
+
 			require("mason-lspconfig").setup({
-				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-				automatic_installation = false,
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
+				ensure_installed = {}, -- installs handled by mason-tool-installer above
+				automatic_enable = true,
 			})
 		end,
 	},
