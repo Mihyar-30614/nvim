@@ -1,4 +1,7 @@
 local o = vim.opt
+-- GUI font (Neovide, nvim-qt, etc). Terminal nvim ignores this — set the
+-- font in your terminal emulator instead.
+o.guifont = "JetBrainsMono Nerd Font:h12"
 o.number = true
 o.mouse = "a"
 o.showmode = false

@@ -5,6 +5,16 @@ return {
 		opts = {
 			delay = 0,
 			preset = "helix",
+			-- Disable operator/motion/text-object triggers.
+			-- These register d/y/c as which-key triggers and re-feed the keys,
+			-- causing dd/yy/cc to fire twice.
+			plugins = {
+				presets = {
+					operators = false,
+					motions = false,
+					text_objects = false,
+				},
+			},
 			win = {
 				no_overlap = true,
 				padding = { 1, 1 },
@@ -51,73 +61,17 @@ return {
 				},
 			},
 
-			-- Document existing key chains with comprehensive organization
+			-- Group labels only. Leaf descriptions come from each `desc`
+			-- set on the real keymaps (which-key reads those automatically),
+			-- so duplicating them here is unnecessary.
 			spec = {
-				-- Harpoon Group
-				{ "<leader>h", group = "Harpoon" },
-				{ "<leader>ha", name = "Add file" },
-				{ "<leader>hh", name = "Toggle menu" },
-				{ "<leader>hn", name = "Next file" },
-				{ "<leader>hp", name = "Previous file" },
-				{ "<leader>h1", name = "Go to slot 1" },
-				{ "<leader>h2", name = "Go to slot 2" },
-				{ "<leader>h3", name = "Go to slot 3" },
-				{ "<leader>h4", name = "Go to slot 4" },
-
-				-- Search & Telescope Group
-				{ "<leader>s", group = "Search & Telescope" },
-				{ "<leader>sh", name = "[S]earch [H]elp" },
-				{ "<leader>sk", name = "[S]earch [K]eymaps" },
-				{ "<leader>sf", name = "[S]earch [F]iles" },
-				{ "<leader>ss", name = "[S]earch [S]elect Telescope" },
-				{ "<leader>sw", name = "[S]earch current [W]ord" },
-				{ "<leader>sg", name = "[S]earch [G]rep" },
-				{ "<leader>sd", name = "[S]earch [D]iagnostics" },
-				{ "<leader>sr", name = "[S]earch [R]esume" },
-				{ "<leader>s.", name = "[S]earch Recent Files ('.' for repeat)" },
-				{ "<leader>s/", name = "[S]earch in open files" },
-				{ "<leader>sn", name = "[S]earch [N]eovim files" },
-				{ "<leader>/", name = "[S]earch Buffer" },
-				{ "<leader><leader>", name = "[ ] Find existing buffers" },
-
-				-- File Operations Group
-				{ "<leader>t", group = "File Operations" },
-				{ "<leader>tt", name = "File browser (Oil)" },
-				{ "<leader>tr", name = "Floating terminal" },
-
-				-- Utilities Group
-				{ "<leader>u", group = "Utilities" },
-				{ "<leader>uF", name = "Toggle format on save" },
-				{ "<leader>ut", name = "Toggle expandtab (tabs vs spaces)" },
-				{ "<leader>u2", name = "Set indent width = 2" },
-				{ "<leader>u4", name = "Set indent width = 4" },
-				{ "<leader>u8", name = "Set indent width = 8" },
-
-				-- Database Group
-				{ "<leader>d", group = "Database" },
-				{ "<leader>db", name = "Toggle database UI" },
-
-				-- Diagnostics & Troubleshooting
-				{ "<leader>x", group = "Diagnostics & Troubleshooting" },
-				{ "<leader>xx", name = "Diagnostics (Trouble)" },
-				{ "<leader>xq", name = "Quickfix list" },
-
-				-- Noice Group --
-				{ "<leader>n", group = "Noice" },
-				{ "<leader>nl", name = "Noice Last Message" },
-				{ "<leaeder>nh", name = "Noice History" },
-				{ "<leader>nm", name = "Noice Messages (telescope)" },
-
-				-- Window Navigation
-				{ "<C-h>", name = "Left window" },
-				{ "<C-l>", name = "Right window" },
-				{ "<C-j>", name = "Lower window" },
-				{ "<C-k>", name = "Upper window" },
-				{ "<M-k>", name = "Move visual selection up" },
-				{ "<M-j>", name = "Move visual selection down" },
-
-				-- Terminal
-				{ "<Esc><Esc>", name = "Exit terminal", mode = "t" },
+				{ "<leader>h", group = "Harpoon", icon = { icon = "󰛢", color = "cyan" } },
+				{ "<leader>s", group = "Search & Telescope", icon = { icon = "", color = "blue" } },
+				{ "<leader>t", group = "File Operations", icon = { icon = "", color = "yellow" } },
+				{ "<leader>u", group = "Utilities", icon = { icon = "", color = "orange" } },
+				{ "<leader>d", group = "Database", icon = { icon = "", color = "green" } },
+				{ "<leader>x", group = "Diagnostics & Troubleshooting", icon = { icon = "", color = "red" } },
+				{ "<leader>n", group = "Noice", icon = { icon = "", color = "purple" } },
 			},
 		},
 	},
