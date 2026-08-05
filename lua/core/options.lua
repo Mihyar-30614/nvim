@@ -1,6 +1,4 @@
 local o = vim.opt
--- GUI font (Neovide, nvim-qt, etc). Terminal nvim ignores this — set the
--- font in your terminal emulator instead.
 o.guifont = "JetBrainsMono Nerd Font:h12"
 o.number = true
 o.mouse = "a"
@@ -15,21 +13,17 @@ o.timeoutlen = 400
 o.splitright = true
 o.splitbelow = true
 o.list = false
--- o.list = true
--- o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 o.inccommand = "split"
 o.cursorline = true
 o.scrolloff = 10
 o.confirm = true
+o.relativenumber = true
 
--- Indentation defaults
 o.tabstop = 2
 o.shiftwidth = 2
 o.expandtab = false
 o.smartindent = true
 
--- Filetype specific override
--- python -> 4 spaces
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
 	callback = function()
@@ -38,11 +32,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Makefiles → real tabs, width 8
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "make",
 	callback = function()
-		vim.opt_local.expandtab = false -- enforce real tabs
+		vim.opt_local.expandtab = false
 		vim.opt_local.tabstop = 8
 		vim.opt_local.shiftwidth = 8
 	end,

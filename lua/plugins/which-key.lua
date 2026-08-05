@@ -1,13 +1,11 @@
 return {
 	{
 		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
+		event = "VimEnter",
 		opts = {
 			delay = 0,
 			preset = "helix",
-			-- Disable operator/motion/text-object triggers.
-			-- These register d/y/c as which-key triggers and re-feed the keys,
-			-- causing dd/yy/cc to fire twice.
+			-- operators/motions/text_objects re-feed keys and double-fire dd/yy/cc
 			plugins = {
 				presets = {
 					operators = false,
@@ -22,10 +20,10 @@ return {
 				title_pos = "center",
 			},
 			layout = {
-				height = { min = 4, max = 25 }, -- min and max height of the columns
-				width = { min = 20, max = 50 }, -- min and max width of the columns
-				spacing = 3, -- spacing between columns
-				align = "left", -- align columns left, center or right
+				height = { min = 4, max = 25 },
+				width = { min = 20, max = 50 },
+				spacing = 3,
+				align = "left",
 			},
 			icons = {
 				mappings = vim.g.have_nerd_font,
@@ -44,7 +42,6 @@ return {
 					ScrollWheelUp = "<ScrollWheelUp> ",
 					NL = "<NL> ",
 					BS = "<BS> ",
-					-- Space = "<Space> ",
 					Tab = "<Tab> ",
 					F1 = "<F1>",
 					F2 = "<F2>",
@@ -60,10 +57,6 @@ return {
 					F12 = "<F12>",
 				},
 			},
-
-			-- Group labels only. Leaf descriptions come from each `desc`
-			-- set on the real keymaps (which-key reads those automatically),
-			-- so duplicating them here is unnecessary.
 			spec = {
 				{ "<leader>h", group = "Harpoon", icon = { icon = "󰛢", color = "cyan" } },
 				{ "<leader>s", group = "Search & Telescope", icon = { icon = "", color = "blue" } },

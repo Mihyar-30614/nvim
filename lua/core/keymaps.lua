@@ -1,15 +1,14 @@
 local map = vim.keymap.set
 local opts = { silent = true }
 
--- General
 map({ "n", "v" }, "<Space>", "<Nop>", opts)
 map("i", "jj", "<Esc>", { desc = "Quick escape" })
 map("n", "<leader>w", ":w<CR>", { desc = "Write" })
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("t", "<esc><esc>", "<c-\\><c-n>")
-map("x", "<M-k>", ":move '<-2<CR>gv=gv", { desc = "Move highlighted text up" })
-map("x", "<M-j>", "dp`[V`]", { desc = "Move visual selection down" })
+map("x", "<M-k>", ":move '<-2<CR>gv=gv", { desc = "Move selection up" })
+map("x", "<M-j>", ":move '>+1<CR>gv=gv", { desc = "Move selection down" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -19,7 +18,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Format files
 vim.g.conform_format_on_save_enabled = true
 
 map("n", "<leader>uF", function()
@@ -27,7 +25,6 @@ map("n", "<leader>uF", function()
 	vim.notify("Format on save: " .. (vim.g.conform_format_on_save_enabled and "ON" or "OFF"))
 end, { desc = "Toggle format on save" })
 
--- Indentation utilities
 map("n", "<leader>ut", function()
 	vim.o.expandtab = not vim.o.expandtab
 	vim.notify("expandtab = " .. tostring(vim.o.expandtab))
@@ -52,7 +49,7 @@ map("n", "<leader>u8", function()
 end, { desc = "Set indent width = 8" })
 
 map("n", "<leader>uc", function()
-	vim.cmd.edit(vim.fn.stdpath("config")) -- works with netrw or your dir plugin
+	vim.cmd.edit(vim.fn.stdpath("config"))
 end, { desc = "Open Neovim config directory" })
 
 map("n", "<leader>nl", function()
